@@ -94,13 +94,6 @@ contract TokenERC20 is owned {
         emit Burn(msg.sender, _value);
         return true;
     }
-    
-    function mintToken(address target, uint256 mintedAmount) onlyOwner public {
-        balanceOf[target] = balanceOf[target].add(mintedAmount);
-        totalSupply = totalSupply.add(mintedAmount);
-        emit Transfer(address(0), address(this), mintedAmount);
-        emit Transfer(address(this), target, mintedAmount);
-    }
 
     function freezeAccount(address target, bool freeze) onlyOwner public {
         frozenAccount[target] = freeze;
